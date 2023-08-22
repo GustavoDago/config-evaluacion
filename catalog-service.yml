@@ -23,7 +23,7 @@ eureka:
     instance:
       #hostname: localhost
       instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-      prefer-ip-address: false
+      prefer-ip-address: true
       lease-renewal-interval-in-seconds: 5
       lease-expiration-duration-in-seconds: 10
   
@@ -34,7 +34,7 @@ eureka:
       default:
         connectTimeout: 5000
         readTimeout: 5000
-        
+
   # EVALUAR SUMAR DEPENDENCIA PARA MEJORAR PREFORMANCE / Tolerancia a fallos
   #hystrix:
     #enabled: true
