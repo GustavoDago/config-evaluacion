@@ -39,14 +39,14 @@ eureka:
       enabled: true
     service-url:
       default-zone: http://localhost:8761/eureka
-  
+
     instance:
       hostname: localhost
       instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
       prefer-ip-address: true
       lease-renewal-interval-in-seconds: 5
       lease-expiration-duration-in-seconds: 10
-  
+
   # CONFIGURACIÓN CORRESPONDENTE A LA IMPLEMENTACIÓN DE FEIGN
   feign:
     client:
@@ -55,29 +55,27 @@ eureka:
           connectTimeout: 5000
           readTimeout: 5000
 
-  resilience4j:
-  circuitbreaker:
-    instances:
-      movies: # se define el nombre de la instancia que se utilizará en el método donde se aplique circuitBreaker
-        registerHealthIndicator: true
-        slidingWindowSize: 5
-        permittedNumberOfCallsInHalfOpenState: 3
-        slidingWindowType: COUNT_BASED
-        minimumNumberOfCalls: 20
-        waitDurationInOpenState: 50s
-        failureRateThreshold: 50
-        eventConsumerBufferSize: 10
-        automaticTransitionFromOpenToHlafOpenEnabled: true
+# CONFIGURACIÓN CORRESPONDENTE A LA IMPLEMENTACIÓN DE RESILIENCE4J
+
+  #resilience4j:
+  #circuitbreaker:
+    #instances:
+      #movies: # se define el nombre de la instancia que se utilizará en el método donde se aplique circuitBreaker
+        #registerHealthIndicator: true
+        #slidingWindowSize: 5
+        #permittedNumberOfCallsInHalfOpenState: 3
+        #slidingWindowType: COUNT_BASED
+        #minimumNumberOfCalls: 20
+        #waitDurationInOpenState: 50s
+        #failureRateThreshold: 50
+        #eventConsumerBufferSize: 10
+        #automaticTransitionFromOpenToHlafOpenEnabled: true
 
   # EVALUAR SUMAR DEPENDENCIA PARA MEJORAR PREFORMANCE / Tolerancia a fallos
   #hystrix:
-    #enabled: true
-
+  #enabled: true
 # EXTRA= SE PUEDE SUMAR LOGGING PARA VER CUALQUIER PROBLEMA RELATIVO AL BALANCEO
-  #logging:
-  #level:
-    #com.netflix.loadbalancer: DEBUG
-  
+#logging:
+#level:
+#com.netflix.loadbalancer: DEBUG
 
-
-    
