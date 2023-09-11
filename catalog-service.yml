@@ -49,11 +49,11 @@ eureka:
   
   # CONFIGURACIÓN CORRESPONDENTE A LA IMPLEMENTACIÓN DE FEIGN
   feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 5000
+    client:
+      config:
+        default:
+          connectTimeout: 5000
+          readTimeout: 5000
 
   resilience4j:
   circuitbreaker:
