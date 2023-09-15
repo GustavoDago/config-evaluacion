@@ -49,11 +49,34 @@ feign:
       default:
         connectTimeout: 5000
         readTimeout: 5000
-  # EVALUAR SUMAR DEPENDENCIA PARA MEJORAR PREFORMANCE / Tolerancia a fallos
-  #hystrix:
-    #enabled: true
+  
 
-# EXTRA SE PUEDE SUMAR LOGGING PARA VER CUALQUIER PROBLEMA RELATIVO AL BALANCEO
-  #logging:
-  #level:
-    #com.netflix.loadbalancer: DEBUG
+resilience4j:
+  circuitbreaker:
+    instances:
+      movies: # se define el nombre de la instancia que se utilizará en el método donde se aplique circuitBreaker
+        registerHealthIndicator: true
+        allowHealthIndicatorToFail: false
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        slidingWindowSize: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowType: COUNT_BASED
+        minimumNumberOfCalls: 20
+        waitDurationInOpenState: 15000
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+        
+
+# CONFIGURACIÓN CORRESPONDIENTE A LOS RETRY
+
+retry:
+    instances:
+      movies:
+        maxAttemps: 3
+        waitDuration: 1000
+        retryException[0]: feign.FeignException$InternalServerError
+
+  
+
+
+    
