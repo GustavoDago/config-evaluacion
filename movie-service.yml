@@ -25,7 +25,7 @@ message: "Se levanta movie service"
 
 queue: # llave de configuración para conocer cómo se llama la cola
   movie:
-    name: ColaMovie
+    name: movie
 
 eureka:
   client:
