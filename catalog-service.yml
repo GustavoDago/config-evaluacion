@@ -21,9 +21,9 @@ spring:
 
 queue: # llave de configuración para conocer cómo se llama la cola
   serie:
-    name: ColaSerie
+    name: serie
   movie:
-    name: ColaMovie
+    name: movie
 
 message: "Se levanta el microservicio catalog service"
 
