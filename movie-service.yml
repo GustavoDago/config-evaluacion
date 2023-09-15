@@ -24,8 +24,8 @@ spring:
 message: "Se levanta movie service"
 # llave de configuración para conocer cómo se llama la cola
 queue: 
-  movie:
-    name: ColaMovie
+  Colamovie:
+    name: movie
 
 eureka:
   client:
