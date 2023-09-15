@@ -22,10 +22,10 @@ spring:
     port: 5672
 
 message: "Se levanta movie service"
-
-queue: # llave de configuración para conocer cómo se llama la cola
+# llave de configuración para conocer cómo se llama la cola
+queue: 
   movie:
-    name: movie
+    name: ColaMovie
 
 eureka:
   client:
